@@ -1,0 +1,1 @@
+> vector-only - Combine vector and keyword search ✅ Start simple - Use Chroma + LangChain for learning, scale as needed ✅ Always evaluate - Track recall, precision, and answer quality Key Takeaways What You Should Remember

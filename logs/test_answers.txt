@@ -1,0 +1,12 @@
+Question: What are the production dos for RAG?
+Answer:
+The production do's for RAG (Retrieval-augmented generation) include starting simple, iterating based on metrics, using metadata filtering, combining vector and keyword search (hybrid approach), monitoring retrieval quality (recall@k, precision), keeping embeddings synchronized with documents, and evaluating with domain-specific questions. Additionally, it's essential to always evaluate the system for continuous improvement.
+--------------------------------------------------------------------------------
+Question: What is the difference between standard retrieval and the ColPali approach?
+Answer:
+The context does not provide specific information about the "ColPali" approach. However, it does mention a hybrid approach combining vector and keyword search for better results, and standard searches like keyword search are mentioned. Therefore, without more context or explicit comparison, it is not possible to determine the difference between standard retrieval and the ColPali approach.
+--------------------------------------------------------------------------------
+Question: Why is hybrid search better than vector-only search?
+Answer:
+Hybrid search is better than vector-only search because it reduces retrieval failures by 67% compared to the baseline. This is achieved through a two-stage architecture where Stage 1 performs similarity search and selects the top 100 results, followed by Stage 2, a re-ranking pipeline that further refines the top 5-10 results. The hybrid approach also leads to better accuracy in responses due to the use of the RUG (Retrieved Unit Graph) approach, which allows for the addition and updating of new knowledge more cost-effectively compared to vector-only search. Additionally, hybrid search is more efficient when dealing with large amounts of proprietary data or knowledge.
+--------------------------------------------------------------------------------
