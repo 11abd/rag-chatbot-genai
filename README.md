@@ -23,18 +23,31 @@ The system supports document-grounded question answering using hybrid retrieval
 ## 🧠 Architecture
 
 PDFs / Videos
+
 ↓
+
 Text Extraction & Transcription
+
 ↓
+
 Cleaning & Chunking
+
 ↓
+
 Embeddings (Sentence Transformers)
+
 ↓
+
 Vector DB (ChromaDB)
+
 ↓
+
 Hybrid Retrieval (Vector + BM25)
+
 ↓
+
 LLM Generation (Ollama)
+
 
 ---
 
@@ -58,11 +71,18 @@ python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 
+```
+
 ### 2. Install Ollama & model
+ ```cmd
 ollama pull mistral
 
-###3. Run the chatbot
+```
+
+### 3. Run the chatbot
+```cmd
 python app.py
+```
 
 Answers will be printed in the terminal and saved to:
 
@@ -70,7 +90,7 @@ logs/test_answers.txt
 
 ---
 
-📊 Evaluation
+## 📊 Evaluation
 
 The system was evaluated using predefined lecture questions.
 Retrieval quality was assessed via human-in-the-loop analysis
@@ -81,7 +101,7 @@ queries, while sparse concepts were identified as known limitations
 without metadata enrichment.
 
 
-🔍 Example Questions
+## 🔍 Example Questions
 
 What are the production do’s for RAG?
 
@@ -90,7 +110,7 @@ What is the difference between standard retrieval and the ColPali approach?
 Why is hybrid search better than vector-only search?
 
 
-📌 Notes
+## 📌 Notes
 
 Runs fully locally (CPU-only)
 
