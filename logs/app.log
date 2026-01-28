@@ -20,3 +20,19 @@
 2026-01-28 22:06:31,603 | INFO | Sending prompt to Ollama
 2026-01-28 22:08:18,795 | INFO | Received response from Ollama
 2026-01-28 22:08:18,795 | INFO | Answer generated
+2026-01-28 22:14:23,573 | INFO | Hybrid ranking completed
+2026-01-28 22:14:23,620 | INFO | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 22:14:23,862 | INFO | Use pytorch device_name: cpu
+2026-01-28 22:14:23,864 | INFO | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 22:15:01,092 | INFO | User question: Hello, Tell me about llm models
+2026-01-28 22:15:01,092 | INFO | RAG query received
+2026-01-28 22:15:01,092 | INFO | Starting hybrid retrieval
+2026-01-28 22:15:01,255 | INFO | Vector retrieval completed
+2026-01-28 22:15:01,737 | INFO | BM25 retrieval completed
+2026-01-28 22:15:01,737 | INFO | Context retrieved
+2026-01-28 22:15:01,737 | INFO | Prompt constructed
+2026-01-28 22:15:01,737 | INFO | Sending prompt to Ollama
+2026-01-28 22:17:02,261 | INFO | Received response from Ollama
+2026-01-28 22:17:02,261 | INFO | Answer generated
+2026-01-28 22:17:02,264 | INFO | Answer successfully generated
+2026-01-28 22:27:52,452 | INFO | User exited application

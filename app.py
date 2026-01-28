@@ -1,18 +1,31 @@
 from generation.rag_chain import ask_rag
+from utils.logger import logger
 
-questions = [
-    "What are the production dos for RAG?",
-    "Tell me about Colpali approach"
-    
-    ]
+def main():
+    print("🔍 RAG Chatbot (type 'exit' to quit)\n")
 
-for q in questions:
-    print("\n" + "=" * 80)
-    print(f"❓ {q}")
-    print("=" * 80)
+    while True:
+        question = input("❓ Ask a question: ").strip()
 
-    answer = ask_rag(q)
+        if question.lower() in {"exit", "quit"}:
+            print("👋 Exiting RAG chatbot.")
+            logger.info("User exited application")
+            break
 
-    print("\n✅ ANSWER:\n")
-    print(answer)
+        logger.info(f"User question: {question}")
+
+        try:
+            answer = ask_rag(question)
+            print("\n✅ Answer:\n")
+            print(answer)
+            print("\n" + "-" * 80 + "\n")
+
+            logger.info("Answer successfully generated")
+
+        except Exception as e:
+            logger.exception("Error during RAG execution")
+            print("❌ Error occurred. Check logs/app.log")
+
+if __name__ == "__main__":
+    main()
 
