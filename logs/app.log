@@ -1,0 +1,22 @@
+2026-01-28 22:04:16,875 | INFO | Hybrid ranking completed
+2026-01-28 22:04:16,969 | INFO | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 22:04:17,128 | INFO | Use pytorch device_name: cpu
+2026-01-28 22:04:17,128 | INFO | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 22:04:21,540 | INFO | RAG query received
+2026-01-28 22:04:21,540 | INFO | Starting hybrid retrieval
+2026-01-28 22:04:21,707 | INFO | Vector retrieval completed
+2026-01-28 22:04:22,139 | INFO | BM25 retrieval completed
+2026-01-28 22:04:22,139 | INFO | Context retrieved
+2026-01-28 22:04:22,139 | INFO | Prompt constructed
+2026-01-28 22:04:22,139 | INFO | Sending prompt to Ollama
+2026-01-28 22:06:30,988 | INFO | Received response from Ollama
+2026-01-28 22:06:30,988 | INFO | Answer generated
+2026-01-28 22:06:30,993 | INFO | RAG query received
+2026-01-28 22:06:30,993 | INFO | Starting hybrid retrieval
+2026-01-28 22:06:31,081 | INFO | Vector retrieval completed
+2026-01-28 22:06:31,601 | INFO | BM25 retrieval completed
+2026-01-28 22:06:31,603 | INFO | Context retrieved
+2026-01-28 22:06:31,603 | INFO | Prompt constructed
+2026-01-28 22:06:31,603 | INFO | Sending prompt to Ollama
+2026-01-28 22:08:18,795 | INFO | Received response from Ollama
+2026-01-28 22:08:18,795 | INFO | Answer generated
