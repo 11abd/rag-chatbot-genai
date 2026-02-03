@@ -36,3 +36,128 @@
 2026-01-28 22:17:02,261 | INFO | Answer generated
 2026-01-28 22:17:02,264 | INFO | Answer successfully generated
 2026-01-28 22:27:52,452 | INFO | User exited application
+2026-02-02 14:27:25,241 | INFO | Hybrid ranking completed
+2026-02-02 14:27:25,347 | INFO | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-02 14:27:25,584 | INFO | Use pytorch device_name: cpu
+2026-02-02 14:27:25,584 | INFO | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-02 14:28:40,283 | INFO | Uploaded file: data\pdfs\RAG Intro.pdf
+2026-02-02 14:28:57,682 | INFO | Pipeline triggered via API
+2026-02-02 14:28:57,809 | INFO | PIPELINE STARTED
+2026-02-02 14:28:57,809 | INFO | START: PDF extraction
+2026-02-02 14:28:57,866 | ERROR | Pipeline execution failed
+Traceback (most recent call last):
+  File "C:\Users\abdus\Documents\RAG_chatbot\api.py", line 57, in run_pipeline
+    subprocess.run(
+  File "C:\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', 'pipeline.py']' returned non-zero exit status 1.
+2026-02-02 14:29:08,944 | INFO | Pipeline triggered via API
+2026-02-02 14:29:09,006 | INFO | PIPELINE STARTED
+2026-02-02 14:29:09,006 | INFO | START: PDF extraction
+2026-02-02 14:29:09,058 | ERROR | Pipeline execution failed
+Traceback (most recent call last):
+  File "C:\Users\abdus\Documents\RAG_chatbot\api.py", line 57, in run_pipeline
+    subprocess.run(
+  File "C:\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', 'pipeline.py']' returned non-zero exit status 1.
+2026-02-02 14:29:58,619 | INFO | PIPELINE STARTED
+2026-02-02 14:29:58,619 | INFO | START: PDF extraction
+2026-02-02 14:33:05,564 | INFO | PIPELINE STARTED
+2026-02-02 14:33:05,564 | INFO | START: PDF extraction
+2026-02-02 14:33:46,601 | INFO | PIPELINE STARTED
+2026-02-02 14:33:46,601 | INFO | START: PDF extraction
+2026-02-02 14:36:44,921 | INFO | Hybrid ranking completed
+2026-02-02 14:36:44,958 | INFO | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-02 14:36:45,074 | INFO | Use pytorch device_name: cpu
+2026-02-02 14:36:45,075 | INFO | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-02 14:36:52,441 | INFO | PIPELINE STARTED
+2026-02-02 14:36:52,441 | INFO | START: PDF extraction
+2026-02-02 14:36:52,814 | INFO | END: PDF extraction
+2026-02-02 14:36:52,814 | INFO | START: Audio extraction
+2026-02-02 14:36:52,999 | INFO | END: Audio extraction
+2026-02-02 14:36:53,000 | INFO | START: Audio transcription
+2026-02-02 14:36:57,177 | INFO | END: Audio transcription
+2026-02-02 14:36:57,177 | INFO | START: Text cleaning
+2026-02-02 14:36:57,243 | INFO | END: Text cleaning
+2026-02-02 14:36:57,243 | INFO | Cleaning old artifacts
+2026-02-02 14:36:57,259 | INFO | Deleted data/chunks
+2026-02-02 14:39:35,242 | INFO | Pipeline triggered via API
+2026-02-02 14:39:35,307 | INFO | PIPELINE STARTED
+2026-02-02 14:39:35,307 | INFO | START: PDF extraction
+2026-02-02 14:39:35,364 | ERROR | Pipeline execution failed
+Traceback (most recent call last):
+  File "C:\Users\abdus\Documents\RAG_chatbot\api.py", line 57, in run_pipeline
+    subprocess.run(
+  File "C:\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', 'pipeline.py']' returned non-zero exit status 1.
+2026-02-02 14:39:36,938 | INFO | Pipeline triggered via API
+2026-02-02 14:39:36,990 | INFO | PIPELINE STARTED
+2026-02-02 14:39:36,990 | INFO | START: PDF extraction
+2026-02-02 14:39:37,050 | ERROR | Pipeline execution failed
+Traceback (most recent call last):
+  File "C:\Users\abdus\Documents\RAG_chatbot\api.py", line 57, in run_pipeline
+    subprocess.run(
+  File "C:\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', 'pipeline.py']' returned non-zero exit status 1.
+2026-02-02 14:40:05,356 | INFO | PIPELINE STARTED
+2026-02-02 14:40:05,357 | INFO | START: PDF extraction
+2026-02-02 14:40:05,593 | INFO | END: PDF extraction
+2026-02-02 14:40:05,593 | INFO | START: Audio extraction
+2026-02-02 14:40:05,693 | INFO | END: Audio extraction
+2026-02-02 14:40:05,693 | INFO | START: Audio transcription
+2026-02-02 14:40:08,829 | INFO | END: Audio transcription
+2026-02-02 14:40:08,829 | INFO | START: Text cleaning
+2026-02-02 14:40:08,901 | INFO | END: Text cleaning
+2026-02-02 14:40:08,901 | INFO | Cleaning old artifacts
+2026-02-02 14:40:08,902 | INFO | Deleted vector_db
+2026-02-02 14:40:08,902 | INFO | START: Chunking text
+2026-02-02 14:40:08,987 | INFO | END: Chunking text
+2026-02-02 14:40:08,988 | INFO | START: Embedding & vector store
+2026-02-02 14:40:24,031 | INFO | END: Embedding & vector store
+2026-02-02 14:40:24,031 | INFO | PIPELINE COMPLETED SUCCESSFULLY
+2026-02-02 14:42:47,371 | INFO | Hybrid ranking completed
+2026-02-02 14:42:47,409 | INFO | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-02 14:42:47,491 | INFO | Use pytorch device_name: cpu
+2026-02-02 14:42:47,491 | INFO | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-02 14:43:02,402 | INFO | User question: tell me about RAG
+2026-02-02 14:43:02,402 | INFO | RAG query received
+2026-02-02 14:43:02,402 | INFO | Starting hybrid retrieval
+2026-02-02 14:43:02,529 | INFO | Vector retrieval completed
+2026-02-02 14:43:02,668 | INFO | BM25 retrieval completed
+2026-02-02 14:43:02,668 | INFO | Context retrieved
+2026-02-02 14:43:02,668 | INFO | Prompt constructed
+2026-02-02 14:43:02,668 | INFO | Sending prompt to Ollama
+2026-02-02 14:44:26,583 | INFO | Received response from Ollama
+2026-02-02 14:44:26,583 | INFO | Answer generated
+2026-02-02 14:44:26,585 | INFO | Answer successfully generated
+2026-02-02 20:18:28,420 | INFO | User exited application
+2026-02-03 16:46:23,675 | INFO | RAG PIPELINE STARTED
+2026-02-03 16:46:23,774 | INFO | PDF extraction completed
+2026-02-03 16:46:28,873 | INFO | Audio extraction completed
+2026-02-03 16:51:48,744 | INFO | Audio transcription completed
+2026-02-03 16:51:48,763 | INFO | Text cleaning & merging completed
+2026-02-03 16:51:48,856 | INFO | Chunking completed | chunks=26
+2026-02-03 16:51:49,148 | INFO | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-03 16:51:49,719 | INFO | Use pytorch device_name: cpu
+2026-02-03 16:51:49,719 | INFO | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-03 16:51:57,282 | INFO | Embeddings stored in ChromaDB
+2026-02-03 16:51:57,282 | INFO | RAG PIPELINE COMPLETED SUCCESSFULLY
+2026-02-03 16:54:45,788 | INFO | Hybrid ranking completed
+2026-02-03 16:54:45,885 | INFO | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-03 16:54:46,069 | INFO | Use pytorch device_name: cpu
+2026-02-03 16:54:46,069 | INFO | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-03 16:55:01,577 | INFO | User question: what are vector database
+2026-02-03 16:55:01,577 | INFO | RAG query received
+2026-02-03 16:55:01,577 | INFO | Starting hybrid retrieval
+2026-02-03 16:55:01,744 | INFO | Vector retrieval completed
+2026-02-03 16:55:02,206 | INFO | BM25 retrieval completed
+2026-02-03 16:55:02,206 | INFO | Context retrieved
+2026-02-03 16:55:02,206 | INFO | Prompt constructed
+2026-02-03 16:55:02,206 | INFO | Sending prompt to Ollama
+2026-02-03 16:57:05,220 | INFO | Received response from Ollama
+2026-02-03 16:57:05,220 | INFO | Answer generated
+2026-02-03 16:57:05,225 | INFO | Answer successfully generated
+2026-02-03 17:09:54,285 | INFO | User exited application

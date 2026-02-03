@@ -7,7 +7,6 @@ def clear_old_chunks(output_dir: str):
     if output_dir.exists():
         shutil.rmtree(output_dir)
 
-
 def chunk_text(
     text: str,
     max_words: int = 250,

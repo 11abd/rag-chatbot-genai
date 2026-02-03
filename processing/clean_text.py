@@ -30,6 +30,9 @@ def merge_and_clean(pdf_text_path: str, transcript_dir: str, output_file: str):
 
     transcripts = []
     for file in Path(transcript_dir).glob("*.txt"):
+        if file.name in {"pdf_text.txt", "merged_clean_text.txt"}:
+            continue
+
         transcripts.append(
             f"\n--- {file.name} ---\n" +
             file.read_text(encoding="utf-8")
@@ -40,6 +43,7 @@ def merge_and_clean(pdf_text_path: str, transcript_dir: str, output_file: str):
 
     Path(output_file).write_text(cleaned_text, encoding="utf-8")
     print(f"✅ Clean merged text saved to {output_file}")
+
 
 
 if __name__ == "__main__":

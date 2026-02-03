@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 vector_db/
 data/audio/
+data/audio_wav/
