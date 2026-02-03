@@ -1,121 +1,197 @@
-# RAG Chatbot – PDFs + Lecture Videos
+# 📘 RAG Chatbot (Local, CPU-Only)
 
-An end-to-end Retrieval-Augmented Generation (RAG) chatbot built from scratch using
-PDF lecture slides and recorded lecture videos as a multi-modal knowledge base.
+A local Retrieval-Augmented Generation (RAG) chatbot that ingests PDFs and lecture videos, builds a searchable knowledge base using embeddings, and answers user questions grounded strictly in the ingested content.
 
-The system supports document-grounded question answering using hybrid retrieval
-(vector + keyword search) and a local LLM, with no paid APIs.
+This project is CPU-only, fully offline, and designed for correctness, reproducibility, and explainability, not real-time latency.
 
----
 
-## 🚀 Features
+## 🔹 Key Features
 
-- Multi-modal ingestion (PDFs + lecture videos)
-- Audio transcription using Whisper (CPU-only)
-- Semantic chunking and embedding
-- Persistent vector storage using ChromaDB
-- Hybrid retrieval (Vector + BM25)
-- Grounded answer generation using a local LLM (Ollama + Mistral)
-- Fully reproducible, local-first pipeline
+📄 Multi-format ingestion: PDFs + lecture videos
 
----
+🎧 Speech-to-text using Whisper
 
-## 🧠 Architecture
+✂️ Semantic chunking with overlap
 
+🧠 Vector search using ChromaDB
+
+🤖 Local LLM inference (Ollama)
+
+🔁 Idempotent pipeline (safe to rerun)
+
+🪵 Structured logging
+
+❌ No cloud APIs, no paid services
+
+## 🧱 High-Level Architecture
+```
 PDFs / Videos
-
-↓
-
-Text Extraction & Transcription
-
-↓
-
-Cleaning & Chunking
-
-↓
-
-Embeddings (Sentence Transformers)
-
-↓
-
-Vector DB (ChromaDB)
-
-↓
-
-Hybrid Retrieval (Vector + BM25)
-
-↓
-
-LLM Generation (Ollama)
-
-
----
-
+    ↓
+Text Extraction + Transcription
+    ↓
+Cleaning & Merging
+    ↓
+Chunking
+    ↓
+Embedding (Sentence Transformers)
+    ↓
+ChromaDB (Vector Store)
+    ↓
+Local LLM (RAG-based Answering)
+```
 ## 🛠️ Tech Stack
 
-- Python
-- Whisper (open-source)
-- Sentence Transformers
-- ChromaDB
-- BM25 (rank-bm25)
-- Ollama (Mistral)
-- VS Code, Windows CMD
+| Layer               | Technology                                 |
+| ------------------- | ------------------------------------------ |
+| Language            | Python 3.10                                |
+| PDF Parsing         | PyMuPDF                                    |
+| Audio Transcription | OpenAI Whisper (local)                     |
+| Embeddings          | sentence-transformers (`all-MiniLM-L6-v2`) |
+| Vector DB           | ChromaDB (persistent, local)               |
+| LLM                 | Ollama (local models like Mistral / Phi-3) |
+| Chunking            | Custom word-based chunking with overlap    |
+| Logging             | Python logging                             |
+| Platform            | CPU-only, Windows/Linux                    |
 
----
-
-## ▶️ How to Run
-
-### 1. Create environment
-```cmd
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-
+## 📁 Project Structure
+```
+RAG_chatbot/
+├── data/
+│   ├── pdfs/              # Input PDFs
+│   ├── audio/             # Input videos (.mp4)
+│   ├── audio_wav/         # Extracted audio
+│   ├── transcripts/       # Transcripts + merged clean text
+│   └── chunks/            # Text chunks
+├── ingestion/             # PDF & audio ingestion
+├── processing/            # Cleaning & chunking
+├── embeddings/            # Embedding + ChromaDB logic
+├── retrieval/             # Retrieval utilities
+├── generation/            # RAG prompt + LLM logic
+├── utils/                 # Logging & helpers
+├── rag_pipeline.py        # End-to-end ingestion pipeline
+├── app.py                 # Interactive CLI chatbot
+├── requirements.txt
+└── README.md
 ```
 
-### 2. Install Ollama & model
- ```cmd
-ollama pull mistral
+## 📥 How to Add New Data
 
+1️⃣ Add PDFs
+
+Place all PDF files into:
+```
+data/pdfs/
+```
+2️⃣ Add Videos
+
+Place lecture videos (.mp4) into:
+```
+data/audio/
+```
+🔄 Run the RAG Pipeline
+
+The pipeline performs extraction → cleaning → chunking → embedding → vector store rebuild.
+```
+python rag_pipeline.py
 ```
 
-### 3. Run the chatbot
-```cmd
+### What this does:
+
+Extracts text from PDFs
+
+Converts videos to audio and transcribes them
+
+Cleans and merges all text
+
+Deletes old chunks
+
+Creates new chunks
+
+Rebuilds ChromaDB embeddings from scratch
+
+✅ Safe to run multiple times
+
+✅ No duplication
+
+✅ Deterministic behavior
+
+## 💬 Run the Chatbot
+Interaction is via a local CLI chatbot.
+```
 python app.py
 ```
 
-Answers will be printed in the terminal and saved to:
-
-logs/test_answers.txt
-
----
-
-## 📊 Evaluation
-
-The system was evaluated using predefined lecture questions.
-Retrieval quality was assessed via human-in-the-loop analysis
-(Recall@k and ranking relevance).
-
-Hybrid retrieval significantly improved recall for keyword-heavy
-queries, while sparse concepts were identified as known limitations
-without metadata enrichment.
+Usage :
+```
+❓ Ask a question: Ask any question about Vector database
+```
+Type exit to quit.
 
 
-## 🔍 Example Questions
+## 🧠 How RAG Is Enforced
 
-What are the production do’s for RAG?
+🧠 How RAG Is Enforced
 
-What is the difference between standard retrieval and the ColPali approach?
+Queries retrieve relevant chunks from ChromaDB
 
-Why is hybrid search better than vector-only search?
+Retrieved context is injected into the prompt
 
+The LLM is instructed to answer only using retrieved context
 
-## 📌 Notes
+If context is insufficient → responds with “I don’t know”
 
-Runs fully locally (CPU-only)
+This reduces hallucination and improves trustworthiness.
 
-No paid APIs required
+## ⏱️ Performance Notes
 
-Vector DB can be rebuilt at any time
+Retrieval latency: sub-second
 
-Easily extensible with new PDFs or videos
+End-to-end latency: higher due to CPU-only local LLM inference
+
+This is an intentional trade-off
+
+Performance can be improved with:
+
+Smaller models
+
+Model warm-up
+
+GPU inference
+
+##🔐 Design Decisions
+
+Rebuild-based ingestion (no incremental updates)
+
+Local-only execution
+
+No background jobs
+
+Focus on clarity and correctness
+
+These choices make the system easy to reason about and evaluate.
+
+## 🧪 Limitations
+
+Not real-time
+
+CPU-only
+
+No API / UI
+
+Not optimized for very large corpora
+
+All limitations are intentional
+
+## 🚀 Possible Extensions
+
+Metadata-aware chunks (source, page, timestamp)
+
+FastAPI wrapper
+
+Dockerization
+
+Retrieval quality evaluation metrics
+
+## 👨‍💻 Author
+
+Abdul Rahaman S | AI/ML Engineer
