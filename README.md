@@ -7,21 +7,23 @@ This project is CPU-only, fully offline, and designed for correctness, reproduci
 
 ## 🔹 Key Features
 
-📄 Multi-format ingestion: PDFs + lecture videos
+> 📄 Multi-format ingestion: PDFs + lecture videos
 
-🎧 Speech-to-text using Whisper
+> 🎧 Speech-to-text using Whisper
 
-✂️ Semantic chunking with overlap
+> ✂️ Semantic chunking with overlap
 
-🧠 Vector search using ChromaDB
+> 🧠 Vector search using ChromaDB
 
-🤖 Local LLM inference (Ollama)
+> 🔎Hybrid retrieval (Vector search + keyword-based scoring)**
 
-🔁 Idempotent pipeline (safe to rerun)
+> 🤖 Local LLM inference (Ollama)
 
-🪵 Structured logging
+> 🔁 Idempotent pipeline (safe to rerun)
 
-❌ No cloud APIs, no paid services
+> 🪵 Structured logging
+
+> ❌ No cloud APIs, no paid services
 
 ## 🧱 High-Level Architecture
 ```
@@ -36,6 +38,8 @@ Chunking
 Embedding (Sentence Transformers)
     ↓
 ChromaDB (Vector Store)
+    ↓
+Hybrid Retrieval (Vector + Keyword)
     ↓
 Local LLM (RAG-based Answering)
 ```
@@ -72,6 +76,38 @@ RAG_chatbot/
 ├── app.py                 # Interactive CLI chatbot
 ├── requirements.txt
 └── README.md
+```
+## ⚙️ Environment Setup
+1️⃣ Create Virtual Environment
+```
+python -m venv venv
+```
+
+Activate it:
+```
+venv\Scripts\activate
+```
+
+2️⃣ Install Python Dependencies
+```
+pip install -r requirements.txt
+```
+🤖 Install Ollama (Required)
+
+This project uses local LLMs via Ollama.
+
+Install Ollama
+
+👉 https://ollama.com/download
+
+Verify installation:
+```
+ollama --version
+```
+
+Pull a Model
+```
+ollama pull mistral
 ```
 
 ## 📥 How to Add New Data
@@ -115,6 +151,8 @@ Rebuilds ChromaDB embeddings from scratch
 
 ✅ Deterministic behavior
 
+
+
 ## 💬 Run the Chatbot
 Interaction is via a local CLI chatbot.
 ```
@@ -132,65 +170,55 @@ Type exit to quit.
 
 🧠 How RAG Is Enforced
 
-Queries retrieve relevant chunks from ChromaDB
+- Queries retrieve relevant chunks using hybrid retrieval (vector similarity + keyword relevance)
 
-Retrieved context is injected into the prompt
 
-The LLM is instructed to answer only using retrieved context
+- Retrieved context is injected into the prompt
 
-If context is insufficient → responds with “I don’t know”
+- The LLM is instructed to answer only using retrieved context
+
+- If context is insufficient → responds with “I don’t know”
 
 This reduces hallucination and improves trustworthiness.
 
 ## ⏱️ Performance Notes
 
-Retrieval latency: sub-second
+- Retrieval latency: sub-second
 
-End-to-end latency: higher due to CPU-only local LLM inference
+- End-to-end latency: higher due to CPU-only local LLM inference
 
-This is an intentional trade-off
+- This is an intentional trade-off
 
 Performance can be improved with:
 
-Smaller models
+- Smaller models
+- Model warm-up
+- GPU inference
 
-Model warm-up
+## 🔐 Design Decisions
 
-GPU inference
-
-##🔐 Design Decisions
-
-Rebuild-based ingestion (no incremental updates)
-
-Local-only execution
-
-No background jobs
-
-Focus on clarity and correctness
+- Rebuild-based ingestion (no incremental updates)
+- Local-only execution
+- No background jobs
+- Focus on clarity and correctness
 
 These choices make the system easy to reason about and evaluate.
 
 ## 🧪 Limitations
 
-Not real-time
-
-CPU-only
-
-No API / UI
-
-Not optimized for very large corpora
+- Not real-time
+- CPU-only
+- No API / UI
+- Not optimized for very large corpora
 
 All limitations are intentional
 
 ## 🚀 Possible Extensions
 
-Metadata-aware chunks (source, page, timestamp)
-
-FastAPI wrapper
-
-Dockerization
-
-Retrieval quality evaluation metrics
+- Metadata-aware chunks (source, page, timestamp)
+- FastAPI wrapper
+- Dockerization
+- Retrieval quality evaluation metrics
 
 ## 👨‍💻 Author
 
